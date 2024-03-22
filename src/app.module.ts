@@ -8,11 +8,11 @@ import { ConfigModule } from '@nestjs/config';
         ConfigModule.forRoot(),
         TypeOrmModule.forRoot({
         type: 'postgres',
-        host: 'database-1.c7awscq62bc7.us-east-2.rds.amazonaws.com',
+        host: process.env.DB_HOST,
         port: 5432,
-        username: 'postgres',
-        password: 'admin123',
-        database: 'db_supermercado',
+        username: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_NAME,
         autoLoadEntities: true,
         synchronize: false,
         ssl: {
