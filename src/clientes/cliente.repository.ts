@@ -1,18 +1,18 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, Repository } from 'typeorm';
-import { ClienteEntity } from './cliente.entity';
-import { ClienteMapper } from './cliente.mapper';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { ClienteEntity } from './cliente.entity'
+import { ClienteMapper } from './cliente.mapper'
 
 @Injectable()
 export class ClientesRepository {
-    constructor(
-        @InjectRepository(ClienteEntity)
-        private clientesRepository: Repository<ClienteEntity>,
-        private mapper: ClienteMapper
-    ) { }
+  constructor (
+    @InjectRepository(ClienteEntity)
+    private readonly clientesRepository: Repository<ClienteEntity>,
+    private readonly mapper: ClienteMapper
+  ) { }
 
-    getAllClientes(): Promise<ClienteEntity[]> {
-        return this.clientesRepository.find();
-    }
+  async getAllClientes (): Promise<ClienteEntity[]> {
+    return await this.clientesRepository.find()
+  }
 }
