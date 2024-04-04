@@ -1,7 +1,7 @@
 import { Test, type TestingModule } from '@nestjs/testing'
-import { ClientesController } from '../src/clientes/clientes.controller'
-import { ClienteService } from '../src/clientes/clientes.service'
-import { type ClienteDTO } from '../src/clientes/cliente.dto'
+import { ClientesController } from '../clientes/clientes.controller'
+import { ClienteService } from '../clientes/clientes.service'
+import { type ClienteDTO } from '../clientes/cliente.dto'
 
 describe('ClientesController', () => {
   let clientesController: ClientesController
