@@ -39,7 +39,8 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.4",
@@ -60,7 +61,7 @@
       "json",
       "ts"
     ],
-    "rootDir": "tests",
+    "rootDir": "src/tests",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"

@@ -19,7 +19,10 @@ describe('ClientesController', () => {
     }
   ]
   const mockClienteService = {
-    getAllClientes: () => result
+    getAllClientes: () => result,
+    getClienteById: () => result[0],
+    addCliente: () => result[0],
+    updateCliente: () => result[0]
   }
 
   beforeEach(async () => {
@@ -32,10 +35,28 @@ describe('ClientesController', () => {
     clienteService = app.get<ClienteService>(ClienteService)
   })
 
-  describe('getAllClientes', () => {
+  describe('Clientes', () => {
     it('should return an array of clientes', async () => {
       const spy = jest.spyOn(clienteService, 'getAllClientes').mockImplementation(async () => result)
       expect(await clientesController.getAllClientes()).toBe(result)
+      spy.mockRestore()
+    })
+
+    it('should return a cliente found by id', async () => {
+      const spy = jest.spyOn(clienteService, 'getClienteById').mockImplementation(async () => result[0])
+      expect(await clientesController.getClienteById(1)).toBe(result[0])
+      spy.mockRestore()
+    })
+
+    it('should add new cliente', async () => {
+      const spy = jest.spyOn(clienteService, 'addCliente').mockImplementation(async () => result[0])
+      expect(await clientesController.addCliente(result[0])).toBe(result[0])
+      spy.mockRestore()
+    })
+
+    it('should update a cliente', async () => {
+      const spy = jest.spyOn(clienteService, 'updateCliente').mockImplementation(async () => result[0])
+      expect(await clientesController.updateCliente(1, result[0])).toBe(result[0])
       spy.mockRestore()
     })
   })
