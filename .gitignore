@@ -3,3 +3,4 @@ build
 .vscode
 .env
 coverage
+test-report.xml
