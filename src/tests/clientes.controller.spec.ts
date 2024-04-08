@@ -38,7 +38,8 @@ describe('ClientesController', () => {
   describe('Clientes', () => {
     it('should return an array of clientes', async () => {
       const spy = jest.spyOn(clienteService, 'getAllClientes').mockImplementation(async () => result)
-      expect(await clientesController.getAllClientes()).toBe(result)
+      const getClientes = await clientesController.getAllClientes()
+      expect(getClientes).toBe(result)
       spy.mockRestore()
     })
 
