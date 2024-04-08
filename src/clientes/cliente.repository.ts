@@ -18,7 +18,7 @@ export class ClientesRepository {
   }
 
   async getClienteById (id: number): Promise<ClienteEntity> {
-    return await this.clientesRepository.findOne({ where: { id } })
+    return await this.clientesRepository.findOneOrFail({ where: { id } })
   }
 
   async addCliente (clienteDTO: ClienteDTO): Promise<ClienteEntity> {

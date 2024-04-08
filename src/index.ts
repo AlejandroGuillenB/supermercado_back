@@ -2,7 +2,8 @@ import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from './app.module'
 
-async function bootstrap (): Promise<void> {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+async function bootstrap () {
   const app = await NestFactory.create(AppModule)
   const options = new DocumentBuilder()
     .setTitle('Nest Worshop')
