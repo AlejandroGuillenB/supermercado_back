@@ -80,7 +80,7 @@
       "text",
       "html"
     ],
-    "coverageDirectory": "/coverage",
+    "coverageDirectory": "../../coverage",
     "coveragePathIgnorePatterns": [
       ".module.ts",
       ".spec.ts$"
