@@ -13,7 +13,8 @@
     "test": "jest --verbose",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:coverage": "npm test -- --coverage --testResultsProcessor=jest-sonar-reporter"
+    "test:coverage": "jest --coverage --testResultsProcessor=jest-sonar-reporter",
+    "sonar": "jest --ci --coverage"
   },
   "keywords": [
     "typescript",
@@ -64,6 +65,7 @@
     "typeorm": "^0.3.20"
   },
   "jest": {
+    "testResultsProcessor": "./node_modules/jest-sonar-reporter",
     "moduleFileExtensions": [
       "js",
       "json",
