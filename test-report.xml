@@ -4,9 +4,9 @@
     <testCase name="ClienteService Clientes should return a array of clientes" duration="18"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\clientes.controller.spec.ts">
-    <testCase name="ClientesController Clientes should return an array of clientes" duration="17"/>
+    <testCase name="ClientesController Clientes should return an array of clientes" duration="16"/>
     <testCase name="ClientesController Clientes should return a cliente found by id" duration="2"/>
-    <testCase name="ClientesController Clientes should add new cliente" duration="2"/>
+    <testCase name="ClientesController Clientes should add new cliente" duration="3"/>
     <testCase name="ClientesController Clientes should update a cliente" duration="2"/>
   </file>
 </testExecutions>
