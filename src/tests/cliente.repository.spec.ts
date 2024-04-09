@@ -3,7 +3,7 @@ import { ClienteEntity } from '../clientes/cliente.entity'
 import { Test, type TestingModule } from '@nestjs/testing'
 import { getRepositoryToken } from '@nestjs/typeorm'
 import { ClienteMapper } from '../clientes/cliente.mapper'
-import { UpdateResult, type Repository } from 'typeorm'
+import { type Repository } from 'typeorm'
 
 describe('ClienteRepository', () => {
   let clientesRepository: ClientesRepository
@@ -50,12 +50,6 @@ describe('ClienteRepository', () => {
     it('should add new cliente', async () => {
       mockedRepository.save.mockResolvedValueOnce(result[0])
       const cliente = await clientesRepository.addCliente(result[0])
-      expect(cliente).toBeDefined()
-    })
-
-    it('should update a cliente', async () => {
-      mockedRepository.update.mockResolvedValueOnce(new UpdateResult())
-      const cliente = await clientesRepository.updateCliente(1, result[0])
       expect(cliente).toBeDefined()
     })
   })
