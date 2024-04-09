@@ -1,9 +1,21 @@
 import { ClientesRepository } from '../clientes/cliente.repository'
-import { type ClienteEntity } from '../clientes/cliente.entity'
+import { ClienteEntity } from '../clientes/cliente.entity'
 import { Test, type TestingModule } from '@nestjs/testing'
+import { Repository } from 'typeorm'
+import { getRepositoryToken } from '@nestjs/typeorm'
+
+export const createRepositoryMock = (): Repository<ClienteEntity> => {
+  const repositoryMock =
+  Object.getOwnPropertyNames(Repository.prototype).reduce((acc, x) => {
+    acc[x] = jest.fn()
+    return acc
+  }, {}) as Repository<ClienteEntity>
+  return repositoryMock
+}
 
 describe('ClienteRepository', () => {
   let clientesRepository: ClientesRepository
+  let repo: Repository<ClienteEntity>
 
   const result: ClienteEntity[] = [
     {
@@ -27,15 +39,18 @@ describe('ClienteRepository', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      providers: [ClientesRepository]
+      providers: [ClientesRepository, {
+        provide: getRepositoryToken(ClienteEntity), useValue: createRepositoryMock()
+      }]
     }).overrideProvider(ClientesRepository).useValue(mockClientesRepository).compile()
 
     clientesRepository = app.get<ClientesRepository>(ClientesRepository)
+    repo = app.get<Repository<ClienteEntity>>(getRepositoryToken(ClienteEntity))
   })
 
   describe('Clientes', () => {
     it('should return a array of clientes', async () => {
-      const spy = jest.spyOn(clientesRepository, 'getAllClientes').mockResolvedValue(result)
+      const spy = jest.spyOn(repo, 'find').mockResolvedValueOnce(result)
       const clientes = await clientesRepository.getAllClientes()
       expect(clientes).toEqual(result)
       spy.mockRestore()
