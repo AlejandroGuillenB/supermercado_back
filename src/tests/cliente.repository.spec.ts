@@ -3,7 +3,7 @@ import { ClienteEntity } from '../clientes/cliente.entity'
 import { Test, type TestingModule } from '@nestjs/testing'
 import { getRepositoryToken } from '@nestjs/typeorm'
 import { ClienteMapper } from '../clientes/cliente.mapper'
-import { type Repository } from 'typeorm'
+import { UpdateResult, type Repository } from 'typeorm'
 
 describe('ClienteRepository', () => {
   let clientesRepository: ClientesRepository
@@ -42,21 +42,21 @@ describe('ClienteRepository', () => {
     })
 
     it('should return a cliente found by id', async () => {
-      const spy = jest.spyOn(clientesRepository, 'getClienteById')
-      expect(typeof clientesRepository.getClienteById).toBe('function')
-      spy.mockRestore()
+      mockedRepository.findOneOrFail.mockResolvedValueOnce(result[0])
+      const cliente = await clientesRepository.getClienteById(1)
+      expect(cliente).toBeDefined()
     })
 
     it('should add new cliente', async () => {
-      const spy = jest.spyOn(clientesRepository, 'addCliente')
-      expect(typeof clientesRepository.addCliente).toBe('function')
-      spy.mockRestore()
+      mockedRepository.save.mockResolvedValueOnce(result[0])
+      const cliente = await clientesRepository.addCliente(result[0])
+      expect(cliente).toBeDefined()
     })
 
     it('should update a cliente', async () => {
-      const spy = jest.spyOn(clientesRepository, 'updateCliente')
-      expect(typeof clientesRepository.updateCliente).toBe('function')
-      spy.mockRestore()
+      mockedRepository.update.mockResolvedValueOnce(new UpdateResult())
+      const cliente = await clientesRepository.updateCliente(1, result[0])
+      expect(cliente).toBeDefined()
     })
   })
 })
