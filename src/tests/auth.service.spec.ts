@@ -5,6 +5,8 @@ import { JwtService } from '@nestjs/jwt';
 
 describe('AuthService', () => {
   let service: AuthService;
+  let jwtService: JwtService;
+  const token = { access_token: 'token' };
   const users = [
     {
       userId: 1,
@@ -24,6 +26,7 @@ describe('AuthService', () => {
     }).compile();
 
     service = app.get<AuthService>(AuthService);
+    jwtService = app.get<JwtService>(JwtService)
   });
 
   describe('Auth', () => {
@@ -32,9 +35,16 @@ describe('AuthService', () => {
     });
 
     it('should be sign In', async () => {
-      const spy = jest.spyOn(service, 'signIn').mockResolvedValue({ access_token: 'token' })
+      const spy = jest.spyOn(service, 'signIn').mockResolvedValue(token)
       const user = await service.signIn(users[0].username, users[0].password);
-      expect(user).toEqual({ access_token: 'token' })
+      expect(user).toEqual(token)
+      spy.mockRestore();
+    });
+
+    it('should be return a token', async () => {
+      const spy = jest.spyOn(jwtService, 'signAsync').mockResolvedValue('token')
+      const user = await service.signIn(users[0].username, users[0].password);
+      expect(user).toEqual(token)
       spy.mockRestore();
     });
   });
