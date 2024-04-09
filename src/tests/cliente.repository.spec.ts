@@ -3,9 +3,24 @@ import { ClienteEntity } from '../clientes/cliente.entity'
 import { Test, type TestingModule } from '@nestjs/testing'
 import { getRepositoryToken } from '@nestjs/typeorm'
 import { ClienteMapper } from '../clientes/cliente.mapper'
+import { type Repository } from 'typeorm'
 
 describe('ClienteRepository', () => {
   let clientesRepository: ClientesRepository
+  let mockedRepository: jest.Mocked<Repository<ClienteEntity>>
+
+  const result: ClienteEntity[] = [
+    {
+      id: 1,
+      nombre: 'Martin',
+      apellido: 'Gutierrez',
+      tipo_doc: 'DNI',
+      nro_doc: '4598676890',
+      nro_tel_princ: '+549116574839',
+      nro_tel_sec: '-',
+      email: 'martin.gutierrez@gmail.com'
+    }
+  ]
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -16,13 +31,14 @@ describe('ClienteRepository', () => {
     }).compile()
 
     clientesRepository = app.get<ClientesRepository>(ClientesRepository)
+    mockedRepository = app.get(getRepositoryToken(ClienteEntity))
   })
 
   describe('Clientes', () => {
     it('should return a array of clientes', async () => {
-      const spy = jest.spyOn(clientesRepository, 'getAllClientes')
-      expect(typeof clientesRepository.getAllClientes).toBe('function')
-      spy.mockRestore()
+      mockedRepository.find.mockResolvedValueOnce(result)
+      const clientes = await clientesRepository.getAllClientes()
+      expect(clientes).toBeDefined()
     })
 
     it('should return a cliente found by id', async () => {
