@@ -19,14 +19,12 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Public()
   @Post('login')
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   async signIn(@Body() signInDto: Record<string, any>) {
     return await this.authService.signIn(signInDto.username, signInDto.password);
   }
 
   @UseGuards(AuthGuard)
   @Get('profile')
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   getProfile(@Request() req) {
     return req.user;
   }

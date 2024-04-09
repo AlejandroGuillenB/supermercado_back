@@ -39,7 +39,6 @@ export class AuthGuard implements CanActivate {
           secret: jwtConstants.secret
         }
       );
-      // eslint-disable-next-line @typescript-eslint/dot-notation
       request['user'] = payload;
     } catch {
       throw new UnauthorizedException();
