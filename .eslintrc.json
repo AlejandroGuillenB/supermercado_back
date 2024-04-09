@@ -9,6 +9,10 @@
         "sourceType": "module"
     },
     "rules": {
-        "@typescript-eslint/strict-boolean-expressions": "warn"
+        "@typescript-eslint/semi": 0,
+        "@typescript-eslint/comma-dangle": 0,
+        "@typescript-eslint/space-before-function-paren": 0,
+        "@typescript-eslint/no-unsafe-argument": 0,
+        "@typescript-eslint/strict-boolean-expressions": 0
     }
 }
