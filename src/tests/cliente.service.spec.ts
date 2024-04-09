@@ -43,5 +43,23 @@ describe('ClienteService', () => {
       expect(await clienteService.getAllClientes()).toEqual(result)
       spy.mockRestore()
     })
+
+    it('should return a cliente found by id', async () => {
+      const spy = jest.spyOn(clienteRepository, 'getClienteById').mockImplementation(async () => result[0])
+      expect(await clienteService.getClienteById(1)).toEqual(result[0])
+      spy.mockRestore()
+    })
+
+    it('should add new cliente', async () => {
+      const spy = jest.spyOn(clienteRepository, 'addCliente').mockImplementation(async () => result[0])
+      expect(await clienteService.addCliente(result[0])).toEqual(result[0])
+      spy.mockRestore()
+    })
+
+    it('should update a cliente', async () => {
+      const spy = jest.spyOn(clienteRepository, 'updateCliente').mockImplementation(async () => result[0])
+      expect(await clienteService.updateCliente(1, result[0])).toEqual(result[0])
+      spy.mockRestore()
+    })
   })
 })
