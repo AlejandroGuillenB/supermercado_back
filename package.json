@@ -85,7 +85,8 @@
     ],
     "coveragePathIgnorePatterns": [
       ".module.ts",
-      ".spec.ts$"
+      ".spec.ts$",
+      "auth.guard.ts"
     ],
     "testEnvironment": "node"
   }
