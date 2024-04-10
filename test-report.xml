@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\guill\Documents\ts-demo\src\tests\auth.service.spec.ts">
-    <testCase name="AuthService Auth should be defined" duration="29"/>
-    <testCase name="AuthService Auth should be sign In" duration="6"/>
-    <testCase name="AuthService Auth should be return a token" duration="55"/>
-  </file>
-  <file path="C:\Users\guill\Documents\ts-demo\src\tests\users.service.spec.ts">
-    <testCase name="UsersService Users should be defined" duration="23"/>
-  </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\cliente.repository.spec.ts">
-    <testCase name="ClienteRepository Clientes should return a array of clientes" duration="21"/>
-    <testCase name="ClienteRepository Clientes should return a cliente found by id" duration="4"/>
-    <testCase name="ClienteRepository Clientes should add new cliente" duration="3"/>
+    <testCase name="ClienteRepository Clientes should return a array of clientes" duration="23"/>
+    <testCase name="ClienteRepository Clientes should return a cliente found by id" duration="3"/>
+    <testCase name="ClienteRepository Clientes should add new cliente" duration="5"/>
+  </file>
+  <file path="C:\Users\guill\Documents\ts-demo\src\tests\clientes.controller.spec.ts">
+    <testCase name="ClientesController Clientes should return an array of clientes" duration="27"/>
+    <testCase name="ClientesController Clientes should return a cliente found by id" duration="3"/>
+    <testCase name="ClientesController Clientes should add new cliente" duration="2"/>
+    <testCase name="ClientesController Clientes should update a cliente" duration="2"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\auth.controller.spec.ts">
-    <testCase name="AuthController Auth should be defined" duration="20"/>
+    <testCase name="AuthController Auth should be defined" duration="27"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\cliente.service.spec.ts">
-    <testCase name="ClienteService Clientes should return a array of clientes" duration="19"/>
-    <testCase name="ClienteService Clientes should return a cliente found by id" duration="2"/>
+    <testCase name="ClienteService Clientes should return a array of clientes" duration="22"/>
+    <testCase name="ClienteService Clientes should return a cliente found by id" duration="3"/>
     <testCase name="ClienteService Clientes should add new cliente" duration="2"/>
     <testCase name="ClienteService Clientes should update a cliente" duration="2"/>
   </file>
-  <file path="C:\Users\guill\Documents\ts-demo\src\tests\clientes.controller.spec.ts">
-    <testCase name="ClientesController Clientes should return an array of clientes" duration="16"/>
-    <testCase name="ClientesController Clientes should return a cliente found by id" duration="2"/>
-    <testCase name="ClientesController Clientes should add new cliente" duration="2"/>
-    <testCase name="ClientesController Clientes should update a cliente" duration="1"/>
+  <file path="C:\Users\guill\Documents\ts-demo\src\tests\auth.service.spec.ts">
+    <testCase name="AuthService Auth should be defined" duration="17"/>
+    <testCase name="AuthService Auth should be sign In" duration="4"/>
+    <testCase name="AuthService Auth should be return a token" duration="3"/>
+  </file>
+  <file path="C:\Users\guill\Documents\ts-demo\src\tests\users.service.spec.ts">
+    <testCase name="UsersService Users should be defined" duration="15"/>
   </file>
 </testExecutions>
