@@ -8,12 +8,12 @@ export class UsersService {
     {
       userId: 1,
       username: 'john',
-      password: process.env.PASS1,
+      password: 'changeme',
     },
     {
       userId: 2,
       username: 'maria',
-      password: process.env.PASS2,
+      password: 'guess',
     },
   ];
   ;

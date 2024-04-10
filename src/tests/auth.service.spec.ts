@@ -43,11 +43,9 @@ describe('AuthService', () => {
 
     it('should be return a token', async () => {
       const spy = jest.spyOn(jwtService, 'signAsync').mockResolvedValue('token')
-      const spyService = jest.spyOn(service, 'signIn').mockResolvedValue(token)
       const user = await service.signIn(users[0].username, users[0].password);
       expect(user).toEqual(token)
       spy.mockRestore();
-      spyService.mockRestore()
     });
   });
 });
