@@ -92,7 +92,7 @@
     "coveragePathIgnorePatterns": [
       ".module.ts",
       ".spec.ts$",
-      "auth.guard.ts"
+      "auth/decorators/*"
     ],
     "testEnvironment": "node"
   }

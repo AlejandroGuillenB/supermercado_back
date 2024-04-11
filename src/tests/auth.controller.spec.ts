@@ -5,45 +5,63 @@ import { AuthService } from '../auth/auth.service';
 import { UsersService } from '../users/users.service';
 import { UsersRepository } from '../users/users.repository';
 import { UsersMapper } from '../users/users.mapper';
-import { type UsersDTO } from '../users/users.dto';
+import { type LoginDTO } from '../auth/login.dto';
+import { type UsersEntity } from '../users/users.entity';
 
 describe('AuthController', () => {
-  let controller: AuthController;
-
-  const users: UsersDTO[] = [
+  let authController: AuthController;
+  let jwtService: JwtService;
+  const login: LoginDTO = {
+    name: 'juan',
+    pass: '123'
+  };
+  const usersEntity: UsersEntity[] = [
     {
-      id: 1,
+      userid: 1,
       username: 'john',
-      password: 'changeme'
+      password: 'changeme',
+      hashPassword: async function (): Promise<void> {
+        throw new Error('Function not implemented.');
+      },
+      validatePassword: async function (password: string): Promise<boolean> {
+        return true;
+      }
     },
     {
-      id: 2,
+      userid: 2,
       username: 'maria',
-      password: 'guess'
+      password: 'guess',
+      hashPassword: async function (): Promise<void> {
+        throw new Error('Function not implemented.');
+      },
+      validatePassword: async function (password: string): Promise<boolean> {
+        throw new Error('Function not implemented.');
+      }
     },
   ];
-
-  const mockUsersService = {
-    getAllUsers: () => users,
-    getUserById: () => users[0],
-    getUserByName: () => users[0],
-    newUser: () => users[0],
-    updateUser: () => users[0],
-    deleteUser: () => {}
-  }
+  const mockUsersRepository = {
+    getUserByName: () => usersEntity[0]
+  };
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const app: TestingModule = await Test.createTestingModule({
       controllers: [AuthController],
       providers: [JwtService, AuthService, UsersService, UsersRepository, UsersMapper]
-    }).overrideProvider(UsersRepository).useValue(mockUsersService).compile();
+    }).overrideProvider(UsersRepository).useValue(mockUsersRepository).compile();
 
-    controller = module.get<AuthController>(AuthController);
+    authController = app.get<AuthController>(AuthController);
+    jwtService = app.get<JwtService>(JwtService);
   });
 
   describe('Auth', () => {
     it('should be defined', () => {
-      expect(controller).toBeDefined();
+      expect(authController).toBeDefined();
     });
-  })
+
+    it('should be login', async () => {
+      const spyJwt = jest.spyOn(jwtService, 'sign').mockImplementation();
+      expect(await authController.login(login)).toStrictEqual({ access_token: undefined });
+      spyJwt.mockRestore();
+    });
+  });
 });
