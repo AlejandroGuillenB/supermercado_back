@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\cliente.service.spec.ts">
-    <testCase name="ClienteService Clientes should return a array of clientes" duration="31"/>
-    <testCase name="ClienteService Clientes should return a cliente found by id" duration="2"/>
-    <testCase name="ClienteService Clientes should add new cliente" duration="2"/>
-    <testCase name="ClienteService Clientes should update a cliente" duration="1"/>
-  </file>
-  <file path="C:\Users\guill\Documents\ts-demo\src\tests\clientes.controller.spec.ts">
-    <testCase name="ClientesController Clientes should return an array of clientes" duration="29"/>
-    <testCase name="ClientesController Clientes should return a cliente found by id" duration="5"/>
-    <testCase name="ClientesController Clientes should add new cliente" duration="3"/>
-    <testCase name="ClientesController Clientes should update a cliente" duration="5"/>
-  </file>
-  <file path="C:\Users\guill\Documents\ts-demo\src\tests\users.repository.spec.ts">
-    <testCase name="UsersRepository Users should return a array of users" duration="25"/>
-    <testCase name="UsersRepository Users should return a user found by id" duration="5"/>
-    <testCase name="UsersRepository Users should return a user found by username" duration="4"/>
-    <testCase name="UsersRepository Users should add new user" duration="2"/>
-    <testCase name="UsersRepository Users should delete a user" duration="3"/>
+    <testCase name="ClienteService Clientes should return a array of clientes" duration="26"/>
+    <testCase name="ClienteService Clientes should return a cliente found by id" duration="5"/>
+    <testCase name="ClienteService Clientes should add new cliente" duration="3"/>
+    <testCase name="ClienteService Clientes should update a cliente" duration="2"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\cliente.repository.spec.ts">
-    <testCase name="ClienteRepository Clientes should return a array of clientes" duration="28"/>
+    <testCase name="ClienteRepository Clientes should return a array of clientes" duration="25"/>
     <testCase name="ClienteRepository Clientes should return a cliente found by id" duration="4"/>
-    <testCase name="ClienteRepository Clientes should add new cliente" duration="5"/>
+    <testCase name="ClienteRepository Clientes should add new cliente" duration="4"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\auth.service.spec.ts">
-    <testCase name="AuthService Auth should be defined" duration="22"/>
-    <testCase name="AuthService Auth should be sign In" duration="4"/>
-    <testCase name="AuthService Auth should be validate a user" duration="3"/>
+    <testCase name="AuthService Auth should be defined" duration="26"/>
+    <testCase name="AuthService Auth should be sign In" duration="6"/>
+    <testCase name="AuthService Auth should be validate a user" duration="4"/>
+  </file>
+  <file path="C:\Users\guill\Documents\ts-demo\src\tests\clientes.controller.spec.ts">
+    <testCase name="ClientesController Clientes should return an array of clientes" duration="28"/>
+    <testCase name="ClientesController Clientes should return a cliente found by id" duration="5"/>
+    <testCase name="ClientesController Clientes should add new cliente" duration="2"/>
+    <testCase name="ClientesController Clientes should update a cliente" duration="2"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\auth.controller.spec.ts">
     <testCase name="AuthController Auth should be defined" duration="28"/>
-    <testCase name="AuthController Auth should be login" duration="8"/>
-    <testCase name="AuthController Auth should throw an UnauthorizedException" duration="10"/>
+    <testCase name="AuthController Auth should be login" duration="7"/>
+    <testCase name="AuthController Auth should throw an UnauthorizedException" duration="8"/>
+  </file>
+  <file path="C:\Users\guill\Documents\ts-demo\src\tests\users.repository.spec.ts">
+    <testCase name="UsersRepository Users should return a array of users" duration="27"/>
+    <testCase name="UsersRepository Users should return a user found by id" duration="2"/>
+    <testCase name="UsersRepository Users should return a user found by username" duration="3"/>
+    <testCase name="UsersRepository Users should add new user" duration="3"/>
+    <testCase name="UsersRepository Users should delete a user" duration="4"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\users.service.spec.ts">
-    <testCase name="UsersService Users should be defined" duration="17"/>
+    <testCase name="UsersService Users should be defined" duration="22"/>
     <testCase name="UsersService Users should return a array of users" duration="5"/>
-    <testCase name="UsersService Users should found a user by id" duration="2"/>
+    <testCase name="UsersService Users should found a user by id" duration="3"/>
     <testCase name="UsersService Users should found a user by username" duration="2"/>
-    <testCase name="UsersService Users should add a new user" duration="2"/>
-    <testCase name="UsersService Users should update a user" duration="1"/>
-    <testCase name="UsersService Users should delete a user" duration="2"/>
+    <testCase name="UsersService Users should add a new user" duration="4"/>
+    <testCase name="UsersService Users should update a user" duration="3"/>
+    <testCase name="UsersService Users should delete a user" duration="3"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\users.controller.spec.ts">
-    <testCase name="UsersController Users should return an array of users" duration="19"/>
+    <testCase name="UsersController Users should return an array of users" duration="17"/>
     <testCase name="UsersController Users should return a user found by id" duration="3"/>
     <testCase name="UsersController Users should add new user" duration="2"/>
     <testCase name="UsersController Users should update a user" duration="2"/>
-    <testCase name="UsersController Users should delete a user" duration="4"/>
+    <testCase name="UsersController Users should delete a user" duration="2"/>
   </file>
   <file path="C:\Users\guill\Documents\ts-demo\src\tests\jwt.strategy.spec.ts">
-    <testCase name="JwtStrategy validate should return the payload for complete authorization scopes" duration="18"/>
-    <testCase name="JwtStrategy validate should throw UnauthorizedException for incomplete authorization scopes" duration="7"/>
+    <testCase name="JwtStrategy validate should return the payload for complete authorization scopes" duration="17"/>
+    <testCase name="JwtStrategy validate should throw UnauthorizedException for incomplete authorization scopes" duration="6"/>
   </file>
 </testExecutions>

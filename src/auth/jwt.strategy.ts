@@ -4,7 +4,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { type UsersDTO } from '../users/users.dto';
 import { UsersService } from '../users/users.service';
 import { type JWTPayload } from './jwt.payload';
-import 'dotenv/config'
+import { jwtConstants } from './constants';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -12,7 +12,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_SECRET,
+      secretOrKey: jwtConstants.secret,
     });
   }
 
