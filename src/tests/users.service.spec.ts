@@ -94,7 +94,6 @@ describe('UsersService', () => {
 
     it('should delete a user', async () => {
       const spy = jest.spyOn(usersRepository, 'deleteUser').mockImplementation();
-      // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
       expect(await usersService.deleteUser(1)).toBe(undefined);
       spy.mockRestore();
     });

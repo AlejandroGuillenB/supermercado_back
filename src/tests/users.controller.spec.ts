@@ -62,10 +62,9 @@ describe('UsersController', () => {
     });
 
     it('should delete a user', async () => {
-      const spy = jest.spyOn(usersService, 'deleteUser').mockImplementation()
-      // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-      expect(await usersController.deleteUser(1)).toBe(undefined)
-      spy.mockRestore()
+      const spy = jest.spyOn(usersService, 'deleteUser').mockImplementation();
+      expect(await usersController.deleteUser(1)).toBe(undefined);
+      spy.mockRestore();
     });
   });
 });
