@@ -7,10 +7,12 @@ import { UsersRepository } from '../users/users.repository';
 import { UsersMapper } from '../users/users.mapper';
 import { type LoginDTO } from '../auth/login.dto';
 import { type UsersEntity } from '../users/users.entity';
+import { UnauthorizedException } from '@nestjs/common';
 
 describe('AuthController', () => {
   let authController: AuthController;
   let jwtService: JwtService;
+  let authService: AuthService;
   const login: LoginDTO = {
     name: 'juan',
     pass: '123'
@@ -51,6 +53,7 @@ describe('AuthController', () => {
 
     authController = app.get<AuthController>(AuthController);
     jwtService = app.get<JwtService>(JwtService);
+    authService = app.get<AuthService>(AuthService);
   });
 
   describe('Auth', () => {
@@ -62,6 +65,14 @@ describe('AuthController', () => {
       const spyJwt = jest.spyOn(jwtService, 'sign').mockImplementation();
       expect(await authController.login(login)).toStrictEqual({ access_token: undefined });
       spyJwt.mockRestore();
+    });
+
+    it('should throw an UnauthorizedException', async () => {
+      const spyJwt = jest.spyOn(jwtService, 'sign').mockImplementation();
+      const spySer = jest.spyOn(authService, 'validateUser').mockImplementation(async () => false);
+      await expect(authController.login(login)).rejects.toThrowError(UnauthorizedException);
+      spyJwt.mockRestore();
+      spySer.mockRestore();
     });
   });
 });
