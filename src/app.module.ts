@@ -10,13 +10,16 @@ import { UsersModule } from './users/users.module';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
+      host: process.env.POSTGRES_HOST,
       port: 5432,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      synchronize: false
+      synchronize: false,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
     ClientesModule,
     AuthModule,
