@@ -23,6 +23,7 @@
   "author": "@AlejandroGuillenB",
   "license": "ISC",
   "devDependencies": {
+    "@golevelup/ts-jest": "^0.5.0",
     "@nestjs/cli": "^10.3.2",
     "@nestjs/microservices": "^10.3.7",
     "@nestjs/platform-express": "^10.3.7",
@@ -65,6 +66,7 @@
     "@nestjs/swagger": "^7.3.0",
     "@nestjs/typeorm": "^10.0.2",
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.11.3",
@@ -92,7 +94,7 @@
     "coveragePathIgnorePatterns": [
       ".module.ts",
       ".spec.ts$",
-      "auth.guard.ts"
+      "auth/decorators/*"
     ],
     "testEnvironment": "node"
   }

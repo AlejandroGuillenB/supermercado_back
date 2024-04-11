@@ -45,7 +45,7 @@ describe('UsersController', () => {
 
     it('should return a user found by id', async () => {
       const spy = jest.spyOn(usersService, 'getUserById').mockImplementation(async () => users[0])
-      expect(await usersController.getUserById(1)).toBe(users[0])
+      expect(await usersController.getUserById(users[0])).toBe(users[0])
       spy.mockRestore()
     });
 

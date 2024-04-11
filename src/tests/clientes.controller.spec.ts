@@ -4,8 +4,8 @@ import { ClienteService } from '../clientes/clientes.service'
 import { type ClienteDTO } from '../clientes/cliente.dto'
 
 describe('ClientesController', () => {
-  let clientesController: ClientesController
-  let clienteService: ClienteService
+  let clientesController: ClientesController;
+  let clienteService: ClienteService;
   const result: ClienteDTO[] = [
     {
       id: 1,
