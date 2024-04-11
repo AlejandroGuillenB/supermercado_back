@@ -8,7 +8,6 @@ import { type UsersEntity } from '../users/users.entity';
 
 describe('AuthService', () => {
   let service: AuthService;
-  let jwtService: JwtService;
   const token = { access_token: 'token' };
   const users: UsersEntity[] = [
     {
@@ -19,7 +18,7 @@ describe('AuthService', () => {
         throw new Error('Function not implemented.');
       },
       validatePassword: async function (password: string): Promise<boolean> {
-        throw new Error('Function not implemented.');
+        return true;
       }
     },
     {
@@ -50,7 +49,6 @@ describe('AuthService', () => {
     }).overrideProvider(UsersRepository).useValue(mockUsersRepository).compile();
 
     service = app.get<AuthService>(AuthService);
-    jwtService = app.get<JwtService>(JwtService);
   });
 
   describe('Auth', () => {
@@ -59,17 +57,15 @@ describe('AuthService', () => {
     });
 
     it('should be sign In', async () => {
-      const spy = jest.spyOn(service, 'signIn').mockResolvedValue(token)
-      const user = await service.signIn(users[0].username, users[0].password);
-      expect(user).toEqual(token)
+      const spy = jest.spyOn(service, 'generateAccessToken').mockResolvedValue(token);
+      const user = await service.generateAccessToken(users[0].username);
+      expect(user).toEqual(token);
       spy.mockRestore();
     });
 
-    it('should be return a token', async () => {
-      const spy = jest.spyOn(jwtService, 'signAsync').mockResolvedValue('token')
-      const user = await service.signIn(users[0].username, users[0].password);
-      expect(user).toEqual(token)
-      spy.mockRestore();
+    it('should be validate a user', async () => {
+      const user = await service.validateUser(users[0].username, users[0].password);
+      expect(user).toEqual(true);
     });
   });
 });
