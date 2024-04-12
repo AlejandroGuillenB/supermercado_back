@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common'
-import { ClienteService } from './clientes.service'
-import { type ClienteDTO } from './cliente.dto'
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { ClienteService } from './clientes.service';
+import { type ClienteDTO } from './cliente.dto';
 
 @Controller('clientes')
 export class ClientesController {
@@ -8,21 +8,21 @@ export class ClientesController {
 
   @Get()
   async getAllClientes (): Promise<ClienteDTO[]> {
-    return await this.clientesService.getAllClientes()
+    return await this.clientesService.getAllClientes();
   }
 
   @Get(':id')
   async getClienteById (@Param('id') id: number): Promise<ClienteDTO> {
-    return await this.clientesService.getClienteById(id)
+    return await this.clientesService.getClienteById(id);
   }
 
   @Post()
   async addCliente (@Body() cliente: ClienteDTO): Promise<ClienteDTO> {
-    return await this.clientesService.addCliente(cliente)
+    return await this.clientesService.addCliente(cliente);
   }
 
   @Put(':id')
   async updateCliente (@Param('id') id: number, @Body() cliente: ClienteDTO): Promise<ClienteDTO> {
-    return await this.clientesService.updateCliente(id, cliente)
+    return await this.clientesService.updateCliente(id, cliente);
   }
 }

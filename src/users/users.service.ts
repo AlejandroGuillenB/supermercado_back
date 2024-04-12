@@ -14,7 +14,7 @@ export class UsersService {
   ) { }
 
   async getAllUsers(): Promise<UsersDTO[]> {
-    const users: UsersEntity[] = await this.usersRepository.getAllUsers()
+    const users: UsersEntity[] = await this.usersRepository.getAllUsers();
     return users.map(user => this.mapper.entityToDto(user));
   }
 

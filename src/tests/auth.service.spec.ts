@@ -41,7 +41,7 @@ describe('AuthService', () => {
     newUser: () => users[0],
     updateUser: () => users[0],
     deleteUser: () => {}
-  }
+  };
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
