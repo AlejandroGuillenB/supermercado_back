@@ -14,7 +14,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:coverage": "jest --coverage --testResultsProcessor=jest-sonar-reporter",
-    "sonar": "jest --ci --coverage"
+    "sonar": "jest --ci --coverage",
+    "lint": "eslint . --ext .ts",
+    "lint.fix": "eslint . --ext .ts —-fix"
   },
   "keywords": [
     "typescript",
@@ -72,6 +74,7 @@
     "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
+    "snyk": "^1.1288.0",
     "typeorm": "^0.3.20"
   },
   "jest": {

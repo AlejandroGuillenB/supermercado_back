@@ -3,19 +3,38 @@
         "browser": true,
         "es2021": true
     },
-    "extends": "standard-with-typescript",
+    "overrides": [
+        {
+            "files": [
+                "**/*.spec.ts"
+            ],
+            "env": {
+                "jest": true
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "standard-with-typescript",
+        "eslint:recommended"
+    ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "rules": {
-        "@typescript-eslint/semi": 0,
+        "@typescript-eslint/semi": [2, "always"],
         "@typescript-eslint/comma-dangle": 0,
         "@typescript-eslint/space-before-function-paren": 0,
         "@typescript-eslint/no-unsafe-argument": 0,
         "@typescript-eslint/strict-boolean-expressions": 0,
         "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/dot-notation": 0,
-        "@typescript-eslint/no-confusing-void-expression": 0
+        "@typescript-eslint/no-confusing-void-expression": 0,
+        "curly": "error",
+        "no-empty": "error"
     }
 }

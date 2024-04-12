@@ -1,5 +1,5 @@
-import webpack from 'webpack'
-import nodeExternals from 'webpack-node-externals'
+import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals';
 
 const config: webpack.Configuration = {
   mode: 'development',
@@ -19,16 +19,16 @@ const config: webpack.Configuration = {
           'class-transformer/storage',
           '@nestjs/microservices/microservices-module',
           '@nestjs/websockets'
-        ]
+        ];
         if (!lazyImports.includes(resource)) {
-          return false
+          return false;
         }
         try {
-          require.resolve(resource)
+          require.resolve(resource);
         } catch (err) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
     })
   ],
@@ -41,6 +41,6 @@ const config: webpack.Configuration = {
       }
     ]
   }
-}
+};
 
-export default config
+export default config;
