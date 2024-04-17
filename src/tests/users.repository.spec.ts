@@ -14,6 +14,26 @@ describe('UsersRepository', () => {
       userid: 1,
       username: 'john',
       password: 'changeme',
+      rol: 1,
+      empleadoid: 9,
+      empleado: {
+        id: 9,
+        nombre: 'Marcelo',
+        apellido: 'Perez',
+        edad: 28,
+        fecha_nac: new Date('1988-03-17T05:00:00.000Z'),
+        tipo_doc: 'DNI',
+        nro_doc: '39345679',
+        cuil: '12-39345679-9',
+        direccion: 'Carabobo 06',
+        nro_tel_princ: '+5491138765433',
+        nro_tel_sec: '-',
+        email: 'MarceloPerez@gmail.com',
+        cargo: 'Repositor',
+        antiguedad: '9 meses',
+        fecha_ingreso: new Date('2019-04-14T05:00:00.000Z'),
+        salario_anual: 56000
+      },
       hashPassword: async function (): Promise<void> {
         throw new Error('Function not implemented.');
       },
@@ -25,6 +45,26 @@ describe('UsersRepository', () => {
       userid: 2,
       username: 'maria',
       password: 'guess',
+      rol: 2,
+      empleadoid: 1,
+      empleado: {
+        id: 1,
+        nombre: 'Marcelo',
+        apellido: 'Perez',
+        edad: 28,
+        fecha_nac: new Date('1988-03-17T05:00:00.000Z'),
+        tipo_doc: 'DNI',
+        nro_doc: '39345679',
+        cuil: '12-39345679-9',
+        direccion: 'Carabobo 06',
+        nro_tel_princ: '+5491138765433',
+        nro_tel_sec: '-',
+        email: 'MarceloPerez@gmail.com',
+        cargo: 'Repositor',
+        antiguedad: '9 meses',
+        fecha_ingreso: new Date('2019-04-14T05:00:00.000Z'),
+        salario_anual: 56000
+      },
       hashPassword: async function (): Promise<void> {
         throw new Error('Function not implemented.');
       },
@@ -37,7 +77,26 @@ describe('UsersRepository', () => {
   const newUser = {
     id: 1,
     username: 'john',
-    password: 'changeme'
+    rol: 1,
+    empleadoid: 1,
+    empleado: {
+      id: 1,
+      nombre: 'Marcelo',
+      apellido: 'Perez',
+      edad: 28,
+      fecha_nac: new Date('1988-03-17T05:00:00.000Z'),
+      tipo_doc: 'DNI',
+      nro_doc: '39345679',
+      cuil: '12-39345679-9',
+      direccion: 'Carabobo 06',
+      nro_tel_princ: '+5491138765433',
+      nro_tel_sec: '-',
+      email: 'MarceloPerez@gmail.com',
+      cargo: 'Repositor',
+      antiguedad: '9 meses',
+      fecha_ingreso: new Date('2019-04-14T05:00:00.000Z'),
+      salario_anual: 56000
+    }
   };
 
   beforeEach(async () => {

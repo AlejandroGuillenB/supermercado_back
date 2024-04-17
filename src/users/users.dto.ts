@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { EmpleadosDTO } from '../empleados/empleados.dto';
 
 export class UsersDTO {
   @ApiProperty()
@@ -8,11 +9,15 @@ export class UsersDTO {
   readonly username: string;
 
   @ApiProperty()
-  readonly password: string;
+  readonly rol: number;
 
-  constructor(id: number, name: string, pass: string) {
+  @ApiProperty()
+  readonly empleado: EmpleadosDTO;
+
+  constructor(id: number, name: string, rol: number, empleado: EmpleadosDTO) {
     this.id = id;
     this.username = name;
-    this.password = pass;
+    this.rol = rol;
+    this.empleado = empleado;
   }
 }

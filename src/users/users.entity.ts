@@ -1,5 +1,6 @@
 import * as bcrypt from 'bcrypt';
-import { BeforeInsert, Column, Entity, PrimaryColumn } from 'typeorm';
+import { EmpleadosEntity } from '../empleados/empleados.entity';
+import { BeforeInsert, Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
 @Entity('users')
 export class UsersEntity {
@@ -14,7 +15,17 @@ export class UsersEntity {
   @Column({
     type: 'varchar', length: 70, nullable: true
   })
-    password: string;
+    password!: string;
+
+  @Column()
+  readonly rol: number;
+
+  @Column({ unique: true })
+  readonly empleadoid!: number;
+
+  @OneToOne(() => EmpleadosEntity)
+  @JoinColumn({ name: 'empleadoid' })
+    empleado: EmpleadosEntity;
 
   @BeforeInsert()
   async hashPassword() {
@@ -26,9 +37,10 @@ export class UsersEntity {
     return bcrypt.compareSync(password, this.password);
   }
 
-  constructor(userId: number, name: string, pass: string) {
+  constructor(userId: number, name: string, rol: number, empleado: EmpleadosEntity) {
     this.userid = userId;
     this.username = name;
-    this.password = pass;
+    this.rol = rol;
+    this.empleado = empleado;
   }
 }
