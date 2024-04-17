@@ -49,24 +49,7 @@ export class EmpleadosDTO {
   @ApiProperty()
   readonly salario_anual: number;
 
-  constructor(
-    id: number,
-    nombre: string,
-    apellido: string,
-    edad: number,
-    fechaNac: Date,
-    tipoDoc: string,
-    nroDoc: string,
-    cuil: string,
-    direccion: string,
-    nroTelPrinc: string,
-    nroTelSec: string,
-    email: string,
-    cargo: string,
-    antiguedad: string,
-    fechaIngreso: Date,
-    salarioAnual: number
-  ) {
+  constructor(id: number, nombre: string, apellido: string, edad: number, fechaNac: Date, tipoDoc: string, nroDoc: string, cuil: string, direccion: string, nroTelPrinc: string, nroTelSec: string, email: string, cargo: string, antiguedad: string, fechaIngreso: Date, salarioAnual: number) {
     this.id = id;
     this.nombre = nombre;
     this.apellido = apellido;
