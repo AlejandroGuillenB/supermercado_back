@@ -18,7 +18,7 @@ export class UsersRepository {
   }
 
   async getUserById(id: number): Promise<UsersEntity> {
-    return await this.usersRepository.findOneOrFail({ where: { userid: id } });
+    return await this.usersRepository.findOneOrFail({ where: { userid: id }, relations: ['empleado'] });
   }
 
   async getUserByName(name: string): Promise<UsersEntity> {
@@ -31,7 +31,7 @@ export class UsersRepository {
   }
 
   async updateUser(id: number, usersDTO: UsersDTO): Promise<UsersEntity> {
-    const updateUserDTO: UsersDTO = new UsersDTO(id, usersDTO.username, usersDTO.password);
+    const updateUserDTO: UsersDTO = new UsersDTO(id, usersDTO.username, usersDTO.rol, usersDTO.empleado);
     const updateUser = this.mapper.dtoToEntity(updateUserDTO);
     await this.usersRepository.update(id, updateUser);
     return await this.usersRepository.findOneOrFail({ where: { userid: id } });
