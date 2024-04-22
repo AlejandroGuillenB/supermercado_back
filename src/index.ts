@@ -14,7 +14,7 @@ async function bootstrap (): Promise<void> {
   SwaggerModule.setup('api', app, document);
   app.use(
     cors({
-      origin: 'https://supermercado-front.vercel.app',
+      origin: process.env.ORIGIN,
       credentials: true,
     })
   );
