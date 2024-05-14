@@ -30,4 +30,8 @@ export class ClienteService {
     const updateCliente = await this.clientesRepository.updateCliente(id, clienteDTO);
     return this.mapper.entityToDto(updateCliente);
   }
+
+  async summaryCliente (): Promise<any> {
+    return await this.clientesRepository.summaryCliente();
+  }
 }

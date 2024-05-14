@@ -7,26 +7,26 @@ import { ClienteDTO } from './cliente.dto';
 
 @Injectable()
 export class ClientesRepository {
-  constructor (
+  constructor(
     @InjectRepository(ClienteEntity)
     private readonly clientesRepository: Repository<ClienteEntity>,
     private readonly mapper: ClienteMapper
   ) { }
 
-  async getAllClientes (): Promise<ClienteEntity[]> {
+  async getAllClientes(): Promise<ClienteEntity[]> {
     return await this.clientesRepository.find();
   }
 
-  async getClienteById (id: number): Promise<ClienteEntity> {
+  async getClienteById(id: number): Promise<ClienteEntity> {
     return await this.clientesRepository.findOneOrFail({ where: { id } });
   }
 
-  async addCliente (clienteDTO: ClienteDTO): Promise<ClienteEntity> {
+  async addCliente(clienteDTO: ClienteDTO): Promise<ClienteEntity> {
     const newCliente = this.mapper.dtoToEntity(clienteDTO);
     return await this.clientesRepository.save(newCliente);
   }
 
-  async updateCliente (id: number, clienteDTO: ClienteDTO): Promise<ClienteEntity> {
+  async updateCliente(id: number, clienteDTO: ClienteDTO): Promise<ClienteEntity> {
     const updateClienteDTO: ClienteDTO = new ClienteDTO(
       id,
       clienteDTO.nombre,
@@ -40,5 +40,12 @@ export class ClientesRepository {
     const updateCliente = this.mapper.dtoToEntity(updateClienteDTO);
     await this.clientesRepository.update(id, updateCliente);
     return await this.getClienteById(id);
+  }
+
+  async summaryCliente(): Promise<any> {
+    const data = {
+      count: await this.clientesRepository.count()
+    };
+    return data;
   }
 }
