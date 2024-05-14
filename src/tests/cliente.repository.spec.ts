@@ -26,7 +26,7 @@ describe('ClienteRepository', () => {
     const app: TestingModule = await Test.createTestingModule({
       providers: [ClientesRepository, ClienteMapper, {
         provide: getRepositoryToken(ClienteEntity),
-        useValue: { find: jest.fn(), findOneOrFail: jest.fn(), save: jest.fn(), update: jest.fn() }
+        useValue: { find: jest.fn(), findOneOrFail: jest.fn(), save: jest.fn(), update: jest.fn(), count: jest.fn() }
       }]
     }).compile();
 
@@ -51,6 +51,12 @@ describe('ClienteRepository', () => {
       mockedRepository.save.mockResolvedValueOnce(result[0]);
       const cliente = await clientesRepository.addCliente(result[0]);
       expect(cliente).toBeDefined();
+    });
+
+    it('should return a count of clientes', async () => {
+      mockedRepository.count.mockResolvedValueOnce(3);
+      const count = await clientesRepository.summaryCliente();
+      expect(count).toBeDefined();
     });
   });
 });

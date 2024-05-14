@@ -1,10 +1,11 @@
 import { Test, type TestingModule } from '@nestjs/testing';
-import { ClientesController } from '../clientes/clientes.controller';
+import { ClientesController, ClienteController } from '../clientes/clientes.controller';
 import { ClienteService } from '../clientes/clientes.service';
 import { type ClienteDTO } from '../clientes/cliente.dto';
 
 describe('ClientesController', () => {
   let clientesController: ClientesController;
+  let clienteController: ClienteController;
   let clienteService: ClienteService;
   const result: ClienteDTO[] = [
     {
@@ -22,16 +23,18 @@ describe('ClientesController', () => {
     getAllClientes: () => result,
     getClienteById: () => result[0],
     addCliente: () => result[0],
-    updateCliente: () => result[0]
+    updateCliente: () => result[0],
+    summaryCliente: () => 3,
   };
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [ClientesController],
+      controllers: [ClientesController, ClienteController],
       providers: [ClienteService]
     }).overrideProvider(ClienteService).useValue(mockClienteService).compile();
 
     clientesController = app.get<ClientesController>(ClientesController);
+    clienteController = app.get<ClienteController>(ClienteController);
     clienteService = app.get<ClienteService>(ClienteService);
   });
 
@@ -57,6 +60,12 @@ describe('ClientesController', () => {
     it('should update a cliente', async () => {
       const spy = jest.spyOn(clienteService, 'updateCliente').mockImplementation(async () => result[0]);
       expect(await clientesController.updateCliente(1, result[0])).toBe(result[0]);
+      spy.mockRestore();
+    });
+
+    it('should return a count of clientes', async () => {
+      const spy = jest.spyOn(clienteService, 'summaryCliente').mockImplementation(async () => 3);
+      expect(await clienteController.summaryCliente()).toBe(3);
       spy.mockRestore();
     });
   });
