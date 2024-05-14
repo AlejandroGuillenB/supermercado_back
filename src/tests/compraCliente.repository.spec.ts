@@ -30,7 +30,7 @@ describe('ComprasClientesRepository', () => {
   });
 
   describe('ComprasClientes', () => {
-    it('should return a array of compras_clientes', async () => {
+    it('should return an array of compras_clientes', async () => {
       mockedRepository.find.mockResolvedValueOnce(comprasClientes);
       const compras = await compraClienteRepository.getAllComprasClientes();
       expect(compras).toBe(comprasClientes);

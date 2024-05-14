@@ -25,7 +25,8 @@ describe('ClienteService', () => {
     getAllClientes: () => result,
     getClienteById: () => result[0],
     addCliente: () => result[0],
-    updateCliente: () => result[0]
+    updateCliente: () => result[0],
+    summaryCliente: () => 3,
   };
 
   beforeEach(async () => {
@@ -59,6 +60,12 @@ describe('ClienteService', () => {
     it('should update a cliente', async () => {
       const spy = jest.spyOn(clienteRepository, 'updateCliente').mockImplementation(async () => result[0]);
       expect(await clienteService.updateCliente(1, result[0])).toEqual(result[0]);
+      spy.mockRestore();
+    });
+
+    it('should return a count of clientes', async () => {
+      const spy = jest.spyOn(clienteRepository, 'summaryCliente').mockImplementation(async () => 3);
+      expect(await clienteService.summaryCliente()).toEqual(3);
       spy.mockRestore();
     });
   });
